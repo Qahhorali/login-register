@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import image from '../assets/images/male.png'
-// import { authService } from '../assets/Services/authService';
 import { useNavigate } from 'react-router-dom';
 function Register() {
   const navigate = useNavigate()
@@ -75,8 +74,6 @@ function Register() {
     setErrorMessage(null);
     setTrueMessage(null)
     try {
-      // const result = await authService.register(form);
-      // console.log(result);
       setTrueMessage("Muaffaqiatli Royhatdan O'tdingiz")
       navigate('/dashboard')
     } catch (err) {
@@ -87,7 +84,7 @@ function Register() {
   
 
   return (
-    <div className="register w-full h-[100vh] flex justify-center lg:justify-between items-center">
+    <div className="register px-[20px] w-full h-[100vh] flex justify-center lg:justify-between items-center">
       <div className=" w-full max-w-[700px] login-form flex flex-col items-center">
         <h1 className='font-bold text-[40px] text-[#252525]'>Ro'yhatdan O'tish</h1>
         <p className='font-[400] text-[16px] text-[#4B4B4B] pb-[56px]'>Kerakli ma’lumotlarni kiritib ro‘yxatdan o‘ting</p>

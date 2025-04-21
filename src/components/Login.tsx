@@ -61,7 +61,7 @@ function Login() {
   };
 
   return (
-    <div className="login w-full h-[100vh] flex justify-center lg:justify-between items-center">
+    <div className="login px-[20px] w-full h-[100vh] flex justify-center lg:justify-between items-center">
       <div className=" w-full max-w-[700px] login-form flex flex-col items-center">
         <h1 className='font-bold text-[40px] text-[#252525]'>Xush Kelibsiz!</h1>
         <p className='font-[400] text-[16px] text-[#4B4B4B] pb-[56px]'>Login parolingizni kiritib o‘z kabinetingizga kiring.</p>
