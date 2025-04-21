@@ -75,7 +75,7 @@ function Register() {
     setTrueMessage(null)
     try {
       setTrueMessage("Muaffaqiatli Royhatdan O'tdingiz")
-      navigate('/dashboard')
+      navigate('/login')
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Nomaʼlum xatolik';
       setErrorMessage(message);
