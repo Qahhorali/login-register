@@ -87,7 +87,7 @@ function Register() {
   
 
   return (
-    <div className="register w-full h-[100vh] flex justify-between items-center">
+    <div className="register w-full h-[100vh] flex justify-center lg:justify-between items-center">
       <div className=" w-full max-w-[700px] login-form flex flex-col items-center">
         <h1 className='font-bold text-[40px] text-[#252525]'>Ro'yhatdan O'tish</h1>
         <p className='font-[400] text-[16px] text-[#4B4B4B] pb-[56px]'>Kerakli ma’lumotlarni kiritib ro‘yxatdan o‘ting</p>
@@ -124,7 +124,7 @@ function Register() {
             {trueMessage && <p style={{ color: 'green' }}>{trueMessage}</p>}
         </form>
       </div>
-      <div className="img w-full max-w-[800px] h-[600px] bg-no-repeat bg-cover"
+      <div className="img hidden lg:block w-full max-w-[800px] h-[600px] bg-no-repeat bg-cover"
        style={{ backgroundImage: `url(${image})` }}>
         
       </div>
