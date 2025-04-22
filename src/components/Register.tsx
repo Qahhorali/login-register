@@ -36,35 +36,29 @@ function Register() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors: FormErrors = {};
-    let hasError = false
     
   
     if (!form.name.trim()) {
       newErrors.name = 'Ismni kiriting';
-      hasError = true;
     }
   
     if (!form.surname.trim()) {
       newErrors.surname = 'Familiyangizni kiriting';
-      hasError = true;
     }
   
     if (!form.username.trim()) {
       newErrors.username = 'Username kiriting';
-      hasError = true;
     }
   
     if (!form.email.trim()) {
       newErrors.email = 'Email kiriting';
-      hasError = true;
     }
   
     if (!form.password.trim()) {
       newErrors.password = 'Parol kiriting';
-      hasError = true;
     }
   
-    if (hasError) {
+    if (newErrors.email,  newErrors.name, newErrors.surname, newErrors.username, newErrors.password) {
       setErrors(newErrors);
       return;
     }
@@ -85,8 +79,8 @@ function Register() {
   return (
     <div className="register px-[20px] w-full h-[100vh] flex justify-center lg:justify-between items-center">
       <div className=" w-full max-w-[700px] login-form flex flex-col items-center">
-        <h1 className='font-bold text-[40px] text-[#252525]'>Ro'yhatdan O'tish</h1>
-        <p className='font-[400] text-[16px] text-[#4B4B4B] pb-[56px]'>Kerakli ma’lumotlarni kiritib ro‘yxatdan o‘ting</p>
+        <h1 className='font-bold text-[30px] text-[#252525] xs:text-[40px]'>Ro'yhatdan O'tish</h1>
+        <p className='font-[400] text-[16px] text-center text-[#4B4B4B] pb-[56px]'>Kerakli ma’lumotlarni kiritib ro‘yxatdan o‘ting</p>
         <form onSubmit={handleSubmit} action="#" className='w-full max-w-[400px] flex flex-col gap-[20px]'>
             <div className="name-group flex flex-col gap-[10px]">
                 <label htmlFor="#" className='font-[500] text-[18px]'>Ismingiz</label>
