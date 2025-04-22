@@ -1,41 +1,35 @@
 import { useState } from 'react';
 import image from '../assets/images/male.png'
 import { authService } from '../assets/Services/authService';
+import { useNavigate } from 'react-router-dom';
 interface FormErrors {
   username?: string;
   password?: string;
+  name?: string;
+  email?: string;
+  surname?: string;
 } 
 function Login() {
+  const navigate = useNavigate()
 
-  const [form, setForm] = useState({ username: '', password: '' });
+  const [form, setForm] = useState({ username: '', password: '', email: '', name: '', surname: '' });
   const [error, setError] = useState<string | null>(null);
   const [accesLogin, setAccesLogin] = useState<string | null>(null);
   const [errors, setErrors] = useState<FormErrors>({});
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
 
-    const { name, value } = e.target;
-  setForm({ ...form, [name]: value });
 
   setErrors(prev => ({
     ...prev,
-    [name]: ''
+    [e.target.name]: ''
   }));
   };
 
-  // const [errors, setErrors] = useState({
-  //   username: '',
-  //   password: ''
-  // });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // const newErrors = {
-    //   username: '',
-    //   password: ''
-    // };
-
+    
     const newErrors: FormErrors = {};
     let hasError = false;
 
@@ -59,6 +53,7 @@ function Login() {
       const result = await authService.login(form);
       setAccesLogin('Tizimga muaffaqiyatli kirdingiz')
       console.log("Token:", result.token);
+      navigate('/dashboard', { state: { user: form } })
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Noma’lum xatolik';
       setError(errorMessage);

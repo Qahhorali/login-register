@@ -47,6 +47,24 @@ export const authService = {
           throw error;
         }
     },
+
+    async getUserData(token: RegisterData) {
+      try {
+        const response = await fetch(`${API_URL}/my-account/`, {
+          method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(token),
+        });
+  
+        if (!response.ok) throw new Error('Foydalanuvchi maʼlumotlarini olishda xatolik yuz berdi');
+        const result = await response.json();
+        return result;
+      } catch (error) {
+        console.error('User data fetch error:', error);
+        throw error;
+      }
+    },
+
     logout() {
         localStorage.removeItem('token');
     },
