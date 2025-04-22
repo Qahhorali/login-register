@@ -68,8 +68,8 @@ function Login() {
   return (
     <div className="login px-[20px] w-full h-[100vh] flex justify-center lg:justify-between items-center">
       <div className=" w-full max-w-[700px] login-form flex flex-col items-center">
-        <h1 className='font-bold text-[40px] text-[#252525]'>Xush Kelibsiz!</h1>
-        <p className='font-[400] text-[16px] text-[#4B4B4B] pb-[56px]'>Login parolingizni kiritib o‘z kabinetingizga kiring.</p>
+        <h1 className='font-bold text-[30px] xs:text-[40px] text-[#252525]'>Xush Kelibsiz!</h1>
+        <p className='font-[400] text-[16px] text-center text-[#4B4B4B] pb-[56px]'>Login parolingizni kiritib o‘z kabinetingizga kiring.</p>
         <form onSubmit={handleSubmit} action="#" className='w-full max-w-[400px] flex flex-col gap-[20px]'>
             <div className="login-group flex flex-col gap-[10px]">
                 <label htmlFor="#" className='font-[500] text-[18px]'>Login</label>
