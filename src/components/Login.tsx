@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import image from '../assets/images/male.png'
 import { authService } from '../assets/Services/authService';
+interface FormErrors {
+  username?: string;
+  password?: string;
+} 
 function Login() {
-   cont navigation = 
 
   const [form, setForm] = useState({ username: '', password: '' });
   const [error, setError] = useState<string | null>(null);
   const [accesLogin, setAccesLogin] = useState<string | null>(null);
-
+  const [errors, setErrors] = useState<FormErrors>({});
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -20,19 +23,20 @@ function Login() {
   }));
   };
 
-  const [errors, setErrors] = useState({
-    username: '',
-    password: ''
-  });
+  // const [errors, setErrors] = useState({
+  //   username: '',
+  //   password: ''
+  // });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const newErrors = {
-      username: '',
-      password: ''
-    };
+    // const newErrors = {
+    //   username: '',
+    //   password: ''
+    // };
 
+    const newErrors: FormErrors = {};
     let hasError = false;
 
     if (!form.username.trim()) {

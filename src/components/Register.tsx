@@ -1,6 +1,14 @@
 import { useState } from 'react';
 import image from '../assets/images/male.png'
 import { useNavigate } from 'react-router-dom';
+import { authService } from '../assets/Services/authService';
+interface FormErrors{
+  name?: string,
+  surname?: string,
+  username?: string,
+  email?: string,
+  password?: string
+};
 function Register() {
   const navigate = useNavigate()
 
@@ -11,34 +19,25 @@ function Register() {
     username: '',
     password: ''
   });
-
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [trueMessage, setTrueMessage] = useState<string | null>(null)
-
-  const [errors, setErrors] = useState({
-    name: '',
-    surname: '',
-    username: '',
-    email: '',
-    password: ''
-  });
+  const [errors, setErrors] = useState<FormErrors>({});
+  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+
+    setErrors(prev => ({
+      ...prev,
+      [e.target.name]: ''
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    const newErrors = {
-      name: '',
-      surname: '',
-      username: '',
-      email: '',
-      password: ''
-    };
-  
-    let hasError = false;
+    const newErrors: FormErrors = {};
+    let hasError = false
+    
   
     if (!form.name.trim()) {
       newErrors.name = 'Ismni kiriting';
@@ -74,15 +73,15 @@ function Register() {
     setErrorMessage(null);
     setTrueMessage(null)
     try {
-      setTrueMessage("Muaffaqiatli Royhatdan O'tdingiz")
-      navigate('/login')
+      await authService.register(form);
+      setTrueMessage("Muaffaqiyatli ro'yhatdan o'tdingiz");
+      navigate('/login');
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Nomaʼlum xatolik';
       setErrorMessage(message);
     }
   };
   
-
   return (
     <div className="register px-[20px] w-full h-[100vh] flex justify-center lg:justify-between items-center">
       <div className=" w-full max-w-[700px] login-form flex flex-col items-center">

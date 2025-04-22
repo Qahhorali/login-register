@@ -1,5 +1,3 @@
-
-
 const API_URL = 'https://onlyauth.pythonanywhere.com';
 
 interface LoginData {
@@ -40,7 +38,7 @@ export const authService = {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
           });
-    
+
           if (!response.ok) throw new Error('Registration failed');
           const result = await response.json();
           return result;
